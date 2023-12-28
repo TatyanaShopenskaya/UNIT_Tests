@@ -1,12 +1,9 @@
-package seminars.first.Calculator;
 
-import seminars.first.Calculator.Calculator;
-
+import org.example.Calculator;
 import static org.assertj.core.api.Assertions.*;
-
 public class CalculatorTest {
     public static void main(String[] args) {
-        // Проверка базового функционала с целыми числами:
+//         Проверка базового функционала с целыми числами:
         if (8 != Calculator.calculation(2, 6, '+')) {
             throw new AssertionError("Ошибка в методе");
         }
@@ -34,24 +31,40 @@ public class CalculatorTest {
         // }
 
         // Проверка базового функционала с целыми числами, с использованием утверждений:
-        assert 8 == Calculator.calculation(2, 6, '+');
-        assert 0 == Calculator.calculation(2, 2, '-');
-        assert 14 == Calculator.calculation(2, 7, '*');
-        assert 2 == Calculator.calculation(100, 50, '/');
+//        assert 8 == Calculator.calculation(2, 6, '+');
+//        assert 0 == Calculator.calculation(2, 2, '-');
+//        assert 14 == Calculator.calculation(2, 7, '*');
+//        assert 2 == Calculator.calculation(100, 50, '/');
 
         // Проверка базового функционала с целыми числами, с использованием утверждений AssertJ:
-//        assertThat(Calculator.calculation(2, 6, '+')).isEqualTo(8);
-//        assertThat(Calculator.calculation(2, 2, '-')).isEqualTo(0);
-//        assertThat(Calculator.calculation(2, 7, '*')).isEqualTo(14);
-//        assertThat(Calculator.calculation(100, 50, '/')).isEqualTo(2);
+        assertThat(Calculator.calculation(2, 6, '+')).isEqualTo(8);
+        assertThat(Calculator.calculation(2, 2, '-')).isEqualTo(0);
+        assertThat(Calculator.calculation(2, 7, '*')).isEqualTo(14);
+        assertThat(Calculator.calculation(100, 50, '/')).isEqualTo(2);
+
+
+        //HomeWork.HW1.1: Придумайте и опишите (можно в псевдокоде) функцию извлечения корня
+
+        assertThat(Calculator.squareRootExtraction(0)).isEqualTo(0);
+        //assertThat(Calculator.squareRootExtraction(-9)).isEqualTo(3);
+        assertThat(Calculator.squareRootExtraction(9)).isEqualTo(3);
+        //assertThat(Calculator.squareRootExtraction(1/2)).isEqualTo(1.18);
+
+
+        assertThat(Calculator.calculateDiscount(100,10)).isEqualTo(90);
+        assertThat(Calculator.calculateDiscount(0,10)).isEqualTo(90);
+        assertThat(Calculator.calculateDiscount(100,0)).isEqualTo(100);
+        assertThat(Calculator.calculateDiscount(9,101)).isEqualTo(0);
+        assertThat(Calculator.calculateDiscount(-100,10)).isEqualTo(90);
+        assertThat(Calculator.calculateDiscount(100,-100)).isEqualTo(90);
 
         // Проверка ожидаемого исключения, с использованием утверждений AssertJ:
 //        assertThatThrownBy(() ->
 //                Calculator.calculation(8, 4, '_')
 //        ).isInstanceOf(IllegalStateException.class);
 
-        System.out.println(Calculator.calculation(2_147_483_647, 1, '+')); // integer overflow
-        System.out.println(Calculator.squareRootExtraction(169));
+        //System.out.println(Calculator.calculation(2_147_483_647, 1, '+')); // integer overflow
+        //System.out.println(Calculator.squareRootExtraction(169));
 
         // Примерные решения домашних заданий из 1 лекции:
 

@@ -1,4 +1,4 @@
-package seminars.first.Calculator;
+package org.example;
 
 public class Calculator {
     public static int calculation(int firstOperand, int secondOperand, char operator) {
@@ -34,17 +34,48 @@ public class Calculator {
         //  Отрицательные числа
         //  Дробные значения корней
         //  Целые
-            if(num < 0) {
-                throw new IllegalArgumentException("Cannot calculate square root of a negative number");
-            }
-            return Math.sqrt(num);
+        if (num == 0) {
+            return 0;
+        }
+        if (num < 0) {
+            throw new IllegalArgumentException("Cannot calculate square root of a negative number");
+        }
+        else{
+            return (Math.sqrt(num));
+        }
     }
 
-    // Нужно написать в калькуляторе метод вычисления суммы покупки со скидкой и проверить его, используя AssertJ
-    // Примерная сигнатура и тело метода:
-    public static double calculatingDiscount(double purchaseAmount, int discountAmount) {
-        // purchaseAmount - сумма покупки
-        // discountAmount - размер скидки
-        return 0; // Метод должен возвращать сумму покупки со скидкой
+    /*
+    Задание 1.
+    В классе Calculator создайте метод calculateDiscount,
+    который принимает сумму покупки и процент скидки и возвращает сумму
+    с учетом скидки. Ваша задача - проверить этот метод с использованием библиотеки AssertJ.
+    Если метод calculateDiscount получает недопустимые аргументы,
+    он должен выбрасывать исключение ArithmeticException.
+    Не забудьте написать тесты для проверки этого поведения.
+    * purchaseAmount - сумма покупки
+    * discountAmount - размер скидки
+    * // Метод должен возвращать сумму покупки со скидкой
+    */
+
+    public static double calculateDiscount(double purchaseAmount, int discountAmount) {
+        if(purchaseAmount==0) {
+            throw new ArithmeticException("Cannot calculate, because purchase amount is zero");
+        }
+        if(discountAmount==0) {
+            return purchaseAmount;
+        }
+        if(discountAmount>100){
+            throw new ArithmeticException("Cannot calculate, because purchase amount is less than amount with discount");
+        }
+        if(purchaseAmount<0){
+            throw new ArithmeticException("Cannot calculate, because purchase amount is less than zero");
+        }
+        if(discountAmount<0){
+            throw new ArithmeticException("Cannot calculate, because discount amount is less than zero");
+        }
+        else{
+            return(purchaseAmount-purchaseAmount*discountAmount/100);
+        }
     }
 }
